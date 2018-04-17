@@ -1,0 +1,57 @@
+#/bin/bash
+clear
+echo -e '\e[36mWelcome To Lazyfi\e[0m'
+sleep 2
+clear
+echo -e '\e[31mPress Enter To Proceed!\e[0m'
+read
+clear
+echo -e '\e[36mChecking Interface...'
+sleep 1
+airmon-ng > temp.txt
+echo -e 'Done!'
+sleep 1
+clear
+int=$(grep -ow '\bw\w*' temp.txt)
+sleep 1
+clear
+echo -e 'Your Interface is '$int
+sleep 1
+clear
+rm temp.txt
+echo -e 'Starting '$int
+airmon-ng start wlan0
+sleep 1
+clear
+#echo -e 'Killing unnecessary process...'
+#airmon-ng check kill
+#sleep 1
+#clear
+echo -e '\e[31mCheck the other Terminal for a list of available wifi...'&& gnome-terminal -- airodump-ng $int
+sleep 2
+echo -e 'Please make a copy of Bssid and Channel Then Press Enter To Proceed.....\e[0m'
+read
+clear 
+echo -e '\e[92m##           ###     ########  ##    ##  ########  ####'
+echo -e '##          ## ##         ##    ##  ##   ##         ##'
+echo -e '##         ##   ##       ##      ####    ##         ##'
+echo -e '##        ##     ##     ##        ##     ######     ##'
+echo -e '##        #########    ##         ##     ##         ##'
+echo -e '##        ##     ##   ##          ##     ##         ##'
+echo -e '########  ##     ##  ########     ##     ##        ####'
+echo -e ':::::::::::::::::::::::::::::::::::::::::::::::::::::::'
+echo -e '|                                                     |'
+echo -e '|            Choose an option to continue             |'
+echo -e '|                                                     |'
+echo -e '|    [1] start monitor mode                           |'
+echo -e '|                                                     |'
+echo -e '|    [2] start deauth signal                          |'
+echo -e '|                                                     |'
+echo -e '|    [3] crack password                               |'
+echo -e '|                                                     |'
+echo -e '|    [4] clean capture files                          |'
+echo -e '|                                                     |'
+echo -e ':::::::::::::::::::::::::::::::::::::::::::::::::::::::'
+echo -n 'Lazy--> '
+read option
+
