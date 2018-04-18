@@ -1,10 +1,11 @@
-#/bin/bash
+#!/bin/bash
 clear
+printf '\033]2;LAZYFI\a'
 echo -e '\e[36mWelcome To Lazyfi\e[0m'
 sleep 2
 clear
-echo -e '\e[31mPress Enter To Proceed!\e[0m'
-read
+echo -e '\e[31mPress Any Key To Proceed!\e[0m'
+read -n 1
 clear
 echo -e "\e[36mStarting wlan0"
 airmon-ng start wlan0
