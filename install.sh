@@ -25,6 +25,12 @@ sleep 2
 echo "export PATH=/bin/Lazyfi:$PATH" >> ~/.bashrc
 sleep 2
 clear
+echo -e "Cleaning up..."
+cd
+cd /bin/Lazyfi/
+rm -r install.sh
+sleep 2
+clear
 echo -e "Installation Completed Succesfully..."
 sleep 2
 gnome-terminal -- bash -c "lazy"
